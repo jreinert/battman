@@ -55,5 +55,10 @@ module Batman
 
       File.read(energy_file).to_f / (1000 * @precision)
     end
+
+    def remaining_charging_time
+      raise WrongStateError if state != :charging
+      ((full_energy - remaining_energy) / power) * 60
+    end
   end
 end

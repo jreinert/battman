@@ -196,5 +196,37 @@ module Batman
         expect(battery.full_energy).to eq 100.0
       end
     end
+
+    describe '#remaining_charging_time' do
+      it 'calculates the value from the current power and remaining energy' do
+        allow(battery).to receive(:state).and_return(:charging)
+        allow(battery).to receive(:power).and_return(10.0)
+        allow(battery).to receive(:remaining_energy).and_return(90.0)
+        allow(battery).to receive(:full_energy).and_return(100.0)
+        battery.remaining_charging_time
+
+        expect(battery).to have_received(:power)
+        expect(battery).to have_received(:remaining_energy)
+
+        expect(battery.remaining_charging_time).to eq 60.0
+      end
+
+      it 'raises a WrongStateError if the battery is not charging' do
+        allow(battery).to receive(:remaining_energy).and_return(90.0)
+        allow(battery).to receive(:power).and_return(10.0)
+        allow(battery).to receive(:full_energy).and_return(100.0)
+
+        allow(battery).to receive(:state).and_return(:charging)
+        battery.remaining_charging_time
+
+        allow(battery).to receive(:state).and_return(:discharging)
+
+        expect { battery.remaining_charging_time }.to raise_error(WrongStateError)
+
+        allow(battery).to receive(:state).and_return(:idle)
+
+        expect { battery.remaining_charging_time }.to raise_error(WrongStateError)
+      end
+    end
   end
 end

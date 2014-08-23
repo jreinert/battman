@@ -49,5 +49,11 @@ module Batman
       raise WrongStateError if state != :discharging
       (remaining_energy / power) * 60
     end
+
+    def full_energy
+      energy_file = File.join(@path, 'energy_full')
+
+      File.read(energy_file).to_f / (1000 * @precision)
+    end
   end
 end

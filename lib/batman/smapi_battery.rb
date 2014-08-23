@@ -48,5 +48,12 @@ module Batman
 
       File.read(energy_file).to_f / 1000
     end
+
+    def full_energy
+      energy_file = File.join(path, 'last_full_capacity')
+
+      File.read(energy_file).to_f / 1000
+    end
+
   end
 end

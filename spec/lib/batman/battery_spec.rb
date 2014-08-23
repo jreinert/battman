@@ -31,7 +31,8 @@ module Batman
     let(:battery) { Class.new(Battery).new }
 
     [:remaining_percent, :power, :remaining_running_time,
-     :remaining_charging_time, :state, :remaining_energy].each do |method|
+     :remaining_charging_time, :state, :remaining_energy,
+     :full_energy].each do |method|
 
       describe "##{method}" do
 

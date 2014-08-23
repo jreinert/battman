@@ -38,5 +38,11 @@ module Batman
 
       state == :unknown ? :idle : state
     end
+
+    def remaining_energy
+      energy_file = File.join(@path, 'energy_now')
+
+      File.read(energy_file).to_f / (1000 * @precision)
+    end
   end
 end

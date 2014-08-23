@@ -30,5 +30,13 @@ module Batman
 
       state == :discharging ? -1 * power : power
     end
+
+    def state
+      state_file = File.join(@path, 'status')
+
+      state = File.read(state_file).chomp.downcase.to_sym
+
+      state == :unknown ? :idle : state
+    end
   end
 end

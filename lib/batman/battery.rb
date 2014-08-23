@@ -3,10 +3,12 @@ require 'batman/errors'
 module Batman
   class Battery
 
-    def initialize
+    def initialize(battery_index = 0)
       if self.class == Battery
         raise AbstractError.new('cannot instantiate Battery')
       end
+
+      @index = battery_index
     end
 
     def remaining_percent

@@ -1,4 +1,4 @@
-require 'errors'
+require 'batman/errors'
 
 module Batman
   class Battery

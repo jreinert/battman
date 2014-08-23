@@ -8,5 +8,10 @@ module Batman
 
       @precision = precision
     end
+
+    def path
+      @path ||= "/sys/class/power_supply/BAT#{@index}"
+    end
+
   end
 end

@@ -22,5 +22,13 @@ module Batman
 
       (energy_now.to_f / energy_full.to_f) * 100
     end
+
+    def power
+      power_now_file = File.join(@path, 'power_now')
+
+      power = File.read(power_now_file).to_f / (1000 * @precision)
+
+      state == :discharging ? -1 * power : power
+    end
   end
 end

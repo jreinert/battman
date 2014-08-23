@@ -69,5 +69,44 @@ module Batman
       end
 
     end
+
+    describe '#power' do
+
+      let(:power_file) { File.join(battery.path, 'power_now') }
+
+      it 'reads the value from the correct file' do
+        allow(File).to receive(:read).with(power_file).and_return("1000000\n")
+        allow(battery).to receive(:state).and_return(:charging)
+        battery.power
+
+        expect(File).to have_received(:read).with(power_file)
+      end
+
+      it 'returns the power used in watt' do
+        allow(File).to receive(:read).with(power_file).and_return("1000000\n")
+        allow(battery).to receive(:state).and_return(:charging)
+
+        expect(battery.power).to eq(1.0)
+      end
+
+      it 'returns a negative value if state is :discharging' do
+        allow(File).to receive(:read).with(power_file).and_return("1000000\n")
+        allow(battery).to receive(:state).and_return(:discharging)
+
+        expect(battery.power).to be < 0
+      end
+
+      it 'returns a positive value if state is either :charging or :idle' do
+        allow(File).to receive(:read).with(power_file).and_return("1000000\n")
+        allow(battery).to receive(:state).and_return(:charging)
+
+        expect(battery.power).to be >= 0
+
+        allow(battery).to receive(:state).and_return(:idle)
+
+        expect(battery.power).to be >= 0
+      end
+
+    end
   end
 end

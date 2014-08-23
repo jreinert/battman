@@ -40,5 +40,34 @@ module Batman
         expect(battery.instance_variable_get(:@path)).to eq path
       end
     end
+
+    let(:battery) { AcpiBattery.new }
+
+    before(:each) do
+      allow(File).to receive(:join).and_call_original
+    end
+
+    describe '#remaining_percent' do
+
+      let(:energy_full_file) { File.join(battery.path, 'energy_full') }
+      let(:energy_now_file) { File.join(battery.path, 'energy_now') }
+
+      before(:each) do
+        allow(File).to receive(:read).with(energy_full_file).and_return("1000\n")
+        allow(File).to receive(:read).with(energy_now_file).and_return("100\n")
+      end
+
+      it 'reads the value from the correct files' do
+        battery.remaining_percent
+
+        expect(File).to have_received(:read).with(energy_full_file)
+        expect(File).to have_received(:read).with(energy_now_file)
+      end
+
+      it 'calculates the percentage from the read file contents' do
+        expect(battery.remaining_percent).to eq 10
+      end
+
+    end
   end
 end

@@ -13,5 +13,14 @@ module Batman
       @path ||= "/sys/class/power_supply/BAT#{@index}"
     end
 
+    def remaining_percent
+      energy_full_file = File.join(@path, 'energy_full')
+      energy_now_file = File.join(@path, 'energy_now')
+
+      energy_full = File.read(energy_full_file)
+      energy_now = File.read(energy_now_file)
+
+      (energy_now.to_f / energy_full.to_f) * 100
+    end
   end
 end

@@ -19,8 +19,13 @@ module Batman
       raise NotImplementedError.new
     end
 
-    def remaining_time
+    def remaining_running_time
       raise NotImplementedError.new
     end
+
+    def remaining_charging_time
+      raise NotImplementedError.new
+    end
+
   end
 end

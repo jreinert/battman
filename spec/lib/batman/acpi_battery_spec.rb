@@ -148,5 +148,36 @@ module Batman
         expect(battery.remaining_energy).to eq 100.0
       end
     end
+
+    describe '#remaining_running_time' do
+      it 'calculates the value from the current power and remaining energy' do
+        allow(battery).to receive(:state).and_return(:discharging)
+        allow(battery).to receive(:power).and_return(10.0)
+        allow(battery).to receive(:remaining_energy).and_return(100.0)
+        battery.remaining_running_time
+
+        expect(battery).to have_received(:power)
+        expect(battery).to have_received(:remaining_energy)
+
+        expect(battery.remaining_running_time).to eq 600
+      end
+
+      it 'raises a WrongStateError if the battery is not discharging' do
+        allow(battery).to receive(:power).and_return(10.0)
+        allow(battery).to receive(:remaining_energy).and_return(100.0)
+
+        allow(battery).to receive(:state).and_return(:discharging)
+        battery.remaining_running_time
+
+        allow(battery).to receive(:state).and_return(:idle)
+
+        expect { battery.remaining_running_time }.to raise_error(WrongStateError)
+
+        allow(battery).to receive(:state).and_return(:charging)
+
+        expect { battery.remaining_running_time }.to raise_error(WrongStateError)
+      end
+
+    end
   end
 end

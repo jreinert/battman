@@ -42,5 +42,11 @@ module Batman
 
       File.read(state_file).chomp.to_sym
     end
+
+    def remaining_energy
+      energy_file = File.join(path, 'remaining_capacity')
+
+      File.read(energy_file).to_f / 1000
+    end
   end
 end

@@ -137,5 +137,21 @@ module Batman
         expect(battery.state).to eq :discharging
       end
     end
+
+    describe "#remaining_energy" do
+      let(:energy_file) { File.join(battery.path, 'remaining_capacity') }
+
+      it 'reads the value from the correct file' do
+        allow(File).to receive(:read).with(energy_file).and_return("100000\n")
+        battery.remaining_energy
+
+        expect(File).to have_received(:read).with(energy_file)
+      end
+
+      it 'returns the remaining energy in Wh' do
+        allow(File).to receive(:read).with(energy_file).and_return("100000\n")
+        expect(battery.remaining_energy).to eq 100.0
+      end
+    end
   end
 end

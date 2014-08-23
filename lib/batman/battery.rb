@@ -35,5 +35,9 @@ module Batman
       raise NotImplementedError.new
     end
 
+    def full_energy
+      raise NotImplementedError.new
+    end
+
   end
 end

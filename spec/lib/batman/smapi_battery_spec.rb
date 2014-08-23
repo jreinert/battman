@@ -120,5 +120,22 @@ module Batman
       end
 
     end
+
+    describe "#state" do
+      let(:state_file) { File.join(battery.path, 'state') }
+
+      it 'reads the state from the correct file' do
+        allow(File).to receive(:read).with(state_file).and_return("discharging\n")
+        battery.state
+
+        expect(File).to have_received(:read).with(state_file)
+      end
+
+      it 'returns the correct state as a symbol' do
+        allow(File).to receive(:read).with(state_file).and_return("discharging\n")
+
+        expect(battery.state).to eq :discharging
+      end
+    end
   end
 end

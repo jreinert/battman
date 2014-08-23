@@ -36,5 +36,11 @@ module Batman
 
       File.read(power_file).to_f / 1000
     end
+
+    def state
+      state_file = File.join(path, 'state')
+
+      File.read(state_file).chomp.to_sym
+    end
   end
 end

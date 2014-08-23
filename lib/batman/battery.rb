@@ -11,6 +11,10 @@ module Batman
       @index = battery_index
     end
 
+    def state
+      raise NotImplementedError.new
+    end
+
     def remaining_percent
       raise NotImplementedError.new
     end

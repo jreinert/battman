@@ -1,6 +1,6 @@
-require 'batman/dsl/every_block'
+require 'battman/dsl/every_block'
 
-module Batman
+module Battman
   module DSL
     describe EveryBlock do
 

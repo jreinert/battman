@@ -1,8 +1,8 @@
-require 'batman/dsl'
-require 'batman/smapi_battery'
+require 'battman/dsl'
+require 'battman/smapi_battery'
 require 'active_support/core_ext/numeric/time'
 
-module Batman
+module Battman
   describe DSL do
 
     let(:dsl) { Class.new { include DSL }.new }

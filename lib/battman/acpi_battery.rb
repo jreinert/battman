@@ -1,6 +1,6 @@
-require 'batman/battery'
+require 'battman/battery'
 
-module Batman
+module Battman
   class AcpiBattery < Battery
 
     def initialize(index = 0, **opts)
@@ -14,8 +14,8 @@ module Batman
     end
 
     def remaining_percent
-      energy_full_file = File.join(@path, 'energy_full')
-      energy_now_file = File.join(@path, 'energy_now')
+      energy_full_file = File.join(path, 'energy_full')
+      energy_now_file = File.join(path, 'energy_now')
 
       energy_full = File.read(energy_full_file)
       energy_now = File.read(energy_now_file)
@@ -24,7 +24,7 @@ module Batman
     end
 
     def power
-      power_now_file = File.join(@path, 'power_now')
+      power_now_file = File.join(path, 'power_now')
 
       power = File.read(power_now_file).to_f / (1000 * @precision)
 
@@ -32,7 +32,7 @@ module Batman
     end
 
     def state
-      state_file = File.join(@path, 'status')
+      state_file = File.join(path, 'status')
 
       state = File.read(state_file).chomp.downcase.to_sym
 
@@ -40,7 +40,7 @@ module Batman
     end
 
     def remaining_energy
-      energy_file = File.join(@path, 'energy_now')
+      energy_file = File.join(path, 'energy_now')
 
       File.read(energy_file).to_f / (1000 * @precision)
     end
@@ -51,7 +51,7 @@ module Batman
     end
 
     def full_energy
-      energy_file = File.join(@path, 'energy_full')
+      energy_file = File.join(path, 'energy_full')
 
       File.read(energy_file).to_f / (1000 * @precision)
     end

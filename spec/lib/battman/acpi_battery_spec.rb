@@ -1,6 +1,6 @@
-require 'batman/acpi_battery'
+require 'battman/acpi_battery'
 
-module Batman
+module Battman
 
   describe AcpiBattery do
     it 'is a subclass of Battery' do

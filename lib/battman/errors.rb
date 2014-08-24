@@ -1,4 +1,4 @@
-module Batman
+module Battman
   class AbstractError < RuntimeError; end
   class NotImplementedError < RuntimeError; end
   class WrongStateError < RuntimeError; end

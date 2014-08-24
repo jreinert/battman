@@ -1,8 +1,8 @@
-require 'batman/errors'
+require 'battman/errors'
 require 'active_support/core_ext/object/inclusion'
 require 'active_support/core_ext/numeric/time'
 
-module Batman
+module Battman
   class Battery
 
     CONVERSIONS = {

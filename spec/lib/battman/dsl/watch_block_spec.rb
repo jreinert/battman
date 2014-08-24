@@ -1,6 +1,6 @@
-require 'batman/dsl/watch_block'
+require 'battman/dsl/watch_block'
 
-module Batman
+module Battman
   module DSL
     describe WatchBlock do
       let(:dsl) { double('DSL') }

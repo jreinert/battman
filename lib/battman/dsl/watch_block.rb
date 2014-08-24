@@ -1,18 +1,18 @@
-require 'batman/dsl/every_block'
+require 'battman/dsl/every_block'
 
-module Batman
+module Battman
   module DSL
     class WatchBlock
 
-      def initialize(batman, battery)
-        @batman = batman
+      def initialize(battman, battery)
+        @battman = battman
         @battery = battery
       end
 
       def every(interval)
         raise ArgumentError.new('no block given') unless block_given?
 
-        yield EveryBlock.new(@batman, @battery, interval)
+        yield EveryBlock.new(@battman, @battery, interval)
       end
 
     end

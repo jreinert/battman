@@ -1,7 +1,7 @@
 require 'active_support/core_ext/string/inflections'
-require 'batman/dsl/watch_block'
+require 'battman/dsl/watch_block'
 
-module Batman
+module Battman
   module DSL
     Thread.abort_on_exception = true
 
@@ -13,15 +13,15 @@ module Batman
     end
 
     def register(interval, block)
-      @blocks[interval] << block
+      @blocks[interval.to_i] << block
       @greatest_common_interval = @blocks.keys.inject(&:gcd)
     end
 
     def watch(type, index = 0, **opts)
       raise ArgumentError.new('no block given') unless block_given?
 
-      require "batman/#{type}_battery"
-      battery_class = ("Batman::" + "#{type}_battery".camelize).constantize
+      require "battman/#{type}_battery"
+      battery_class = ("Battman::" + "#{type}_battery".camelize).constantize
 
       yield WatchBlock.new(self, battery_class.new(index, **opts))
     end

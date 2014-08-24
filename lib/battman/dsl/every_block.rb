@@ -1,11 +1,11 @@
-module Batman
+module Battman
   module DSL
     class EveryBlock
 
-      def initialize(batman, battery, interval)
+      def initialize(battman, battery, interval)
         @battery = battery
         @interval = interval
-        @batman = batman
+        @battman = battman
         @last_values = {}
       end
 
@@ -24,7 +24,7 @@ module Batman
           @last_values[last_values_hash] = value
         end
 
-        @batman.register(@interval, task)
+        @battman.register(@interval, task)
       end
     end
   end

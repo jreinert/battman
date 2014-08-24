@@ -1,6 +1,6 @@
-require 'batman/smapi_battery'
+require 'battman/smapi_battery'
 
-module Batman
+module Battman
 
   describe SmapiBattery do
 

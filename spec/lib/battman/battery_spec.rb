@@ -1,5 +1,5 @@
-require 'batman/battery'
-module Batman
+require 'battman/battery'
+module Battman
   describe Battery do
 
     describe '.new' do

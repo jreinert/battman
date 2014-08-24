@@ -1,6 +1,6 @@
-require 'batman/battery'
+require 'battman/battery'
 
-module Batman
+module Battman
   class SmapiBattery < Battery
 
     def path

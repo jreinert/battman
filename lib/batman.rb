@@ -1,5 +1,6 @@
 require "batman/version"
+require "batman/dsl"
 
 module Batman
-  # Your code goes here...
+  include DSL
 end

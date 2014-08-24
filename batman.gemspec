@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Batman::VERSION
   spec.authors       = ["Joakim Reinert"]
   spec.email         = ["mail@jreinert.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{A simple dsl for polling battery info}
+  spec.description   = %q{Batman allows specifying actions to perform depending on the value of some battery attribute}
+  spec.homepage      = "https://github.com/jreinert/batman"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")

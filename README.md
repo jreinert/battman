@@ -1,6 +1,6 @@
 # Batman
 
-TODO: Write a gem description
+Batman allows specifying actions to perform depending on the value of some battery attributes
 
 ## Installation
 

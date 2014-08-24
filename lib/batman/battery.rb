@@ -21,7 +21,7 @@ module Batman
       }
     }
 
-    def initialize(battery_index = 0)
+    def initialize(battery_index = 0, **opts)
       if self.class == Battery
         raise AbstractError.new('cannot instantiate Battery')
       end

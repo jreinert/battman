@@ -8,8 +8,8 @@ module Batman
     end
 
     describe '.new' do
-      it 'accepts an optional precision parameter and sets the corresponding instance variable' do
-        battery = AcpiBattery.new(0, 100)
+      it 'accepts an precision option and sets the corresponding instance variable' do
+        battery = AcpiBattery.new(0, precision: 100)
 
         expect(battery.instance_variable_get(:@precision)).to eq 100
       end

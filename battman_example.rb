@@ -34,7 +34,7 @@ Battman::Battman.new do |battman|
             suspend = true
           end
         else
-          supend = false
+          suspend = false
         end
 
       end

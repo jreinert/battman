@@ -11,4 +11,5 @@
 *.so
 *.o
 *.a
+battman*.gem
 mkmf.log

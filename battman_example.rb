@@ -4,7 +4,7 @@ Battman::Battman.new do |battman|
 
   battman.watch :acpi do |watcher|
 
-    current_state = :discharging # to be on the safe side
+    current_state = :discharging # defaulting to discharging
 
     watcher.every 2.seconds do |status|
 

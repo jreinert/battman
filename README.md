@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Check out [this example config](battman_example.rb)
 
 ## Contributing
 

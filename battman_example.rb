@@ -27,7 +27,7 @@ Battman::Battman.new do |battman|
 
         if current_state == :discharging && value.in?(0...5)
           `i3lock && systemctl suspend` if suspend
-          `notify-send -u critical 'Battery is critical'`
+          `notify-send -u critical 'Battery level is critical!'`
 
           if value.in?(0..2)
             `notify-send -u critical 'Suspending in 60 seconds! (plug in cable to abort)'`
